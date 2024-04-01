@@ -1,5 +1,5 @@
 <template>
     <topnav />
-    <admin />
+    <trusted-grocers />
     <footer-file />
 </template>

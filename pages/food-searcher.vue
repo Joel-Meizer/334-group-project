@@ -1,5 +1,5 @@
 <template>
     <topnav />
-    <admin />
+    <food-searcher-inputs />
     <footer-file />
 </template>

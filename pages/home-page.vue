@@ -1,5 +1,6 @@
 <template>
     <topnav />
-    <admin />
+    <home-page />
+    <feature-section-1 />
     <footer-file />
 </template>

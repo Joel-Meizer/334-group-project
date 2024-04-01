@@ -1,5 +1,5 @@
 <template>
     <topnav />
-    <admin />
+    <order-history />
     <footer-file />
 </template>

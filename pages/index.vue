@@ -3,7 +3,7 @@
         <register-login />
     </div>
     <div v-if=!sessionAuthed>
-        
+        <topnav />
     </div>
 </template>
 

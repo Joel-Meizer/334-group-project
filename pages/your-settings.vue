@@ -1,5 +1,4 @@
 <template>
     <topnav />
-    <admin />
     <footer-file />
 </template>
