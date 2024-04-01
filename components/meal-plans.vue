@@ -61,7 +61,7 @@
   ]
   </script>
 
-  <style>
+<style>
     .hoverStyling {
         border-radius: 5px; 
         box-shadow: 5px 8px 10px gray;

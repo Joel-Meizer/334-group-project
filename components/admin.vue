@@ -6,8 +6,8 @@
         <nav class="flex-none px-4 sm:px-6 lg:px-0">
           <ul role="list" class="flex gap-x-3 gap-y-1 whitespace-nowrap lg:flex-col">
             <li v-for="item in secondaryNavigation" :key="item.name">
-              <a :href="item.href" :class="[item.current ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50', 'group flex gap-x-3 rounded-md py-2 pl-2 pr-3 text-sm leading-6 font-semibold']">
-                <component :is="item.icon" :class="[item.current ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600', 'h-6 w-6 shrink-0']" aria-hidden="true" />
+              <a :href="item.href" :class="[item.current ? 'bg-gray-50 text-blue-500' : 'text-gray-700 hover:text-blue-500 hover:bg-gray-50', 'group flex gap-x-3 rounded-md py-2 pl-2 pr-3 text-sm leading-6 font-semibold']">
+                <component :is="item.icon" :class="[item.current ? 'text-blue-500' : 'text-gray-400 group-hover:text-blue-500', 'h-6 w-6 shrink-0']" aria-hidden="true" />
                 {{ item.name }}
               </a>
             </li>
@@ -26,21 +26,21 @@
                 <dt class="font-medium text-gray-900 sm:w-64 sm:flex-none sm:pr-6">Full name</dt>
                 <dd class="mt-1 flex justify-between gap-x-6 sm:mt-0 sm:flex-auto">
                   <div class="text-gray-900">Tom Cook</div>
-                  <button type="button" class="font-semibold text-indigo-600 hover:text-indigo-500">Update</button>
+                  <button type="button" class="font-semibold text-blue-500 hover:text-blue-400">Update</button>
                 </dd>
               </div>
               <div class="pt-6 sm:flex">
                 <dt class="font-medium text-gray-900 sm:w-64 sm:flex-none sm:pr-6">Email address</dt>
                 <dd class="mt-1 flex justify-between gap-x-6 sm:mt-0 sm:flex-auto">
                   <div class="text-gray-900">tom.cook@example.com</div>
-                  <button type="button" class="font-semibold text-indigo-600 hover:text-indigo-500">Update</button>
+                  <button type="button" class="font-semibold text-blue-500 hover:text-blue-400">Update</button>
                 </dd>
               </div>
               <div class="pt-6 sm:flex">
                 <dt class="font-medium text-gray-900 sm:w-64 sm:flex-none sm:pr-6">Title</dt>
                 <dd class="mt-1 flex justify-between gap-x-6 sm:mt-0 sm:flex-auto">
                   <div class="text-gray-900">Human Resources Manager</div>
-                  <button type="button" class="font-semibold text-indigo-600 hover:text-indigo-500">Update</button>
+                  <button type="button" class="font-semibold text-blue-500 hover:text-blue-400">Update</button>
                 </dd>
               </div>
             </dl>
@@ -53,16 +53,16 @@
             <ul role="list" class="mt-6 divide-y divide-gray-100 border-t border-gray-200 text-sm leading-6">
               <li class="flex justify-between gap-x-6 py-6">
                 <div class="font-medium text-gray-900">TD Canada Trust</div>
-                <button type="button" class="font-semibold text-indigo-600 hover:text-indigo-500">Update</button>
+                <button type="button" class="font-semibold text-blue-500 hover:text-blue-400">Update</button>
               </li>
               <li class="flex justify-between gap-x-6 py-6">
                 <div class="font-medium text-gray-900">Royal Bank of Canada</div>
-                <button type="button" class="font-semibold text-indigo-600 hover:text-indigo-500">Update</button>
+                <button type="button" class="font-semibold text-blue-500 hover:text-blue-400">Update</button>
               </li>
             </ul>
   
             <div class="flex border-t border-gray-100 pt-6">
-              <button type="button" class="text-sm font-semibold leading-6 text-indigo-600 hover:text-indigo-500"><span aria-hidden="true">+</span> Add another bank</button>
+              <button type="button" class="text-sm font-semibold leading-6 text-blue-500 hover:text-blue-400"><span aria-hidden="true">+</span> Add another bank</button>
             </div>
           </div>
   
@@ -73,12 +73,12 @@
             <ul role="list" class="mt-6 divide-y divide-gray-100 border-t border-gray-200 text-sm leading-6">
               <li class="flex justify-between gap-x-6 py-6">
                 <div class="font-medium text-gray-900">QuickBooks</div>
-                <button type="button" class="font-semibold text-indigo-600 hover:text-indigo-500">Update</button>
+                <button type="button" class="font-semibold text-blue-500 hover:text-blue-400">Update</button>
               </li>
             </ul>
   
             <div class="flex border-t border-gray-100 pt-6">
-              <button type="button" class="text-sm font-semibold leading-6 text-indigo-600 hover:text-indigo-500"><span aria-hidden="true">+</span> Add another application</button>
+              <button type="button" class="text-sm font-semibold leading-6 text-blue-500 hover:text-blue-400"><span aria-hidden="true">+</span> Add another application</button>
             </div>
           </div>
   
@@ -91,20 +91,20 @@
                 <dt class="font-medium text-gray-900 sm:w-64 sm:flex-none sm:pr-6">Language</dt>
                 <dd class="mt-1 flex justify-between gap-x-6 sm:mt-0 sm:flex-auto">
                   <div class="text-gray-900">English</div>
-                  <button type="button" class="font-semibold text-indigo-600 hover:text-indigo-500">Update</button>
+                  <button type="button" class="font-semibold text-blue-500 hover:text-blue-400">Update</button>
                 </dd>
               </div>
               <div class="pt-6 sm:flex">
                 <dt class="font-medium text-gray-900 sm:w-64 sm:flex-none sm:pr-6">Date format</dt>
                 <dd class="mt-1 flex justify-between gap-x-6 sm:mt-0 sm:flex-auto">
                   <div class="text-gray-900">DD-MM-YYYY</div>
-                  <button type="button" class="font-semibold text-indigo-600 hover:text-indigo-500">Update</button>
+                  <button type="button" class="font-semibold text-blue-500 hover:text-blue-400">Update</button>
                 </dd>
               </div>
               <SwitchGroup as="div" class="flex pt-6">
                 <SwitchLabel as="dt" class="flex-none pr-6 font-medium text-gray-900 sm:w-64" passive>Automatic timezone</SwitchLabel>
                 <dd class="flex flex-auto items-center justify-end">
-                  <Switch v-model="automaticTimezoneEnabled" :class="[automaticTimezoneEnabled ? 'bg-indigo-600' : 'bg-gray-200', 'flex w-8 cursor-pointer rounded-full p-px ring-1 ring-inset ring-gray-900/5 transition-colors duration-200 ease-in-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600']">
+                  <Switch v-model="automaticTimezoneEnabled" :class="[automaticTimezoneEnabled ? 'bg-blue-500' : 'bg-gray-200', 'flex w-8 cursor-pointer rounded-full p-px ring-1 ring-inset ring-gray-900/5 transition-colors duration-200 ease-in-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500']">
                     <span aria-hidden="true" :class="[automaticTimezoneEnabled ? 'translate-x-3.5' : 'translate-x-0', 'h-4 w-4 transform rounded-full bg-white shadow-sm ring-1 ring-gray-900/5 transition duration-200 ease-in-out']" />
                   </Switch>
                 </dd>

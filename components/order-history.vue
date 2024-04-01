@@ -58,11 +58,11 @@
                   </Menu>
   
                   <div class="hidden lg:col-span-2 lg:flex lg:items-center lg:justify-end lg:space-x-4">
-                    <a :href="order.href" class="flex items-center justify-center rounded-md border border-gray-300 bg-white px-2.5 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                    <a :href="order.href" class="flex items-center justify-center rounded-md border border-gray-300 bg-white px-2.5 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2">
                       <span>View Order</span>
                       <span class="sr-only">{{ order.number }}</span>
                     </a>
-                    <a :href="order.invoiceHref" class="flex items-center justify-center rounded-md border border-gray-300 bg-white px-2.5 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                    <a :href="order.invoiceHref" class="flex items-center justify-center rounded-md border border-gray-300 bg-white px-2.5 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2">
                       <span>View Invoice</span>
                       <span class="sr-only">for order {{ order.number }}</span>
                     </a>
@@ -96,10 +96,10 @@
   
                       <div class="mt-6 flex items-center space-x-4 divide-x divide-gray-200 border-t border-gray-200 pt-4 text-sm font-medium sm:ml-4 sm:mt-0 sm:border-none sm:pt-0">
                         <div class="flex flex-1 justify-center">
-                          <a :href="product.href" class="whitespace-nowrap text-indigo-600 hover:text-indigo-500">View shopping list</a>
+                          <a :href="product.href" class="whitespace-nowrap text-blue-500 hover:text-blue-400">View shopping list</a>
                         </div>
                         <div class="flex flex-1 justify-center pl-4">
-                          <a href="#" class="whitespace-nowrap text-indigo-600 hover:text-indigo-500">Order again</a>
+                          <a href="#" class="whitespace-nowrap text-blue-500 hover:text-blue-400">Order again</a>
                         </div>
                       </div>
                     </div>
