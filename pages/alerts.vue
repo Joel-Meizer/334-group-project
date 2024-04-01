@@ -1,5 +1,6 @@
 <template>
     <topnav />
+    <header-text headerText="Alerts" subHeaderText="View alerts as they arrive. Including successful orders, to failed orders all the way to new suggestions and updates."/>
     <div class="mx-auto max-w-7xl sm:px-2 lg:px-8 pt-8">
         <software-update/>
     </div>
