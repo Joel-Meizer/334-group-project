@@ -28,40 +28,56 @@
           </div>
   
           <div>
-            <button @click="login()" class="flex w-full justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500">Sign in</button>
+            <button @click.prevent="login()" class="flex w-full justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500">Sign in</button>
           </div>
         </form>
   
         <p class="mt-10 text-center text-sm text-gray-500">
           Not a member?
           {{ ' ' }}
-          <a href="#" class="font-semibold leading-6 text-blue-500 hover:text-blue-600">Start a 14 day free trial</a>
+          <a href="#" @click.prevent="register()" class="font-semibold leading-6 text-blue-500 hover:text-blue-600">Create a free account today</a>
         </p>
       </div>
     </div>
 </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
-export default {
-  setup() {
-    const email = ref('');
-    const password = ref('');
 
-    const login = async () => {
-      const url = `https://localhost:7249/api/User/GetAccessToken?username=${email.value}&password=${password.value}`
-      const response = await useFetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+const email = ref('');
+const password = ref('');
 
-      // Handle response here
-    };
+async function login() {
+  const url = `https://localhost:7249/api/UserAccount/Validate`
+  const response = await useFetch(url, {
+    body: { email : email.value, password : password.value},
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
 
-    return { email, password, login };
-  }
-}
+};
+
+async function register() {
+  const url = `https://localhost:7249/api/UserAccount/Post`
+  const response = await useFetch(url, {
+    body: { 
+      id: "",
+      email : email.value,
+      password : password.value
+    },
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+};
+
+
+
+
+
 </script>

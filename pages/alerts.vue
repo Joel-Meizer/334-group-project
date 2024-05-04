@@ -19,5 +19,6 @@
     <div class="mx-auto max-w-7xl sm:px-2 lg:px-8 pt-8">
         <error />
     </div>
+    <padding-item />
     <footer-file />
 </template>

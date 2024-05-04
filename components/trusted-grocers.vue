@@ -28,6 +28,11 @@
   </div>
   </template>
   <script setup>
+
+  const props = defineProps({
+      stores: Array
+  });
+
   import { EnvelopeIcon, PhoneIcon } from '@heroicons/vue/20/solid'
   
   const stores = [

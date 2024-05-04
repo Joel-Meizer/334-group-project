@@ -127,6 +127,10 @@
   import { EllipsisVerticalIcon, MagnifyingGlassIcon } from '@heroicons/vue/24/outline'
   import { CheckCircleIcon, ShoppingBagIcon } from '@heroicons/vue/20/solid'
   
+  const props = defineProps({
+      orders: Array
+  });
+
   const orders = [
   {
       number: 'WU88191113',
