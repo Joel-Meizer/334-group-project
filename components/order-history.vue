@@ -124,8 +124,8 @@
     PopoverGroup,
     PopoverPanel,
   } from '@headlessui/vue'
-  import { EllipsisVerticalIcon, MagnifyingGlassIcon } from '@heroicons/vue/24/outline'
-  import { CheckCircleIcon, ShoppingBagIcon } from '@heroicons/vue/20/solid'
+  import { EllipsisVerticalIcon, MagnifyingGlassIcon, ShoppingBagIcon } from '@heroicons/vue/24/outline'
+  import { CheckCircleIcon } from '@heroicons/vue/20/solid'
   
   const props = defineProps({
       orders: Array

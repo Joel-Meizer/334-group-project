@@ -1,7 +1,11 @@
 <template>
-    <form style="padding: 50px; background-color: white; border-radius: 10px; box-shadow: 1px 5px 16px grey; margin-left: 350px; margin-right: 50px;">
+    <div v-if="isLoading">
+        <loading-indicator :Message="message" />
+    </div>
+    <div v-else>
+    <header-text headerText="Your Profile" subHeaderText="Update details and shopping lists to help our grocers understand your needs."/>
+    <form style="padding: 50px; background-color: white; border-radius: 10px; box-shadow: 1px 5px 8px grey; margin-left: 350px; margin-right: 50px;">
       <div class="space-y-12">
-    
         <div class="border-b border-gray-900/10 pb-12">
           <h2 class="text-4xl font-semibold leading-7 text-gray-900">Account Management</h2><br>
           <p class="mt-1 text-sm leading-6 text-gray-600">This information will be used for your user account / profile.</p>
@@ -288,7 +292,7 @@
                   </div>
                   <div class="text-sm leading-6">
                     <label for="purchases" class="font-medium text-gray-900">Purchases</label>
-                    <p class="text-gray-500">Get notified about any cancellations or acceptances.</p>
+                    <p class="text-gray-500">Get notified about any purchases, failures or warning notifications.</p>
                   </div>
                 </div>
                 <div class="relative flex gap-x-3">
@@ -296,8 +300,8 @@
                     <input v-model="shipping" id="shipping" name="shipping" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-deep-purple-accent-400" />
                   </div>
                   <div class="text-sm leading-6">
-                    <label for="shipping" class="font-medium text-gray-900">Shipping</label>
-                    <p class="text-gray-500">Get notified about additional shipping changes.</p>
+                    <label for="shipping" class="font-medium text-gray-900">Suggestions</label>
+                    <p class="text-gray-500">Get notified about new suggestions that might take your interest.</p>
                   </div>
                 </div>
                 <div class="relative flex gap-x-3">
@@ -305,8 +309,8 @@
                     <input v-model="stores" id="stores" name="stores" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-deep-purple-accent-400" />
                   </div>
                   <div class="text-sm leading-6">
-                    <label for="stores" class="font-medium text-gray-900">Stores</label>
-                    <p class="text-gray-500">Get notified about new stores/products in our regular catalogue.</p>
+                    <label for="stores" class="font-medium text-gray-900">Alerts</label>
+                    <p class="text-gray-500">Get notified about new alerts appearing on your account.</p>
                   </div>
                 </div>
               </div>
@@ -317,10 +321,11 @@
     
       <div class="mt-6 flex items-center justify-end gap-x-6">
         <form style="width: 100%;" @submit.prevent="setUserData">
-          <button type="submit" class="rounded-md bg-deep-purple-accent-400 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</button>
+          <button type="submit" class="rounded-md bg-blue-400 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</button>
         </form>
       </div>
     </form>
+  </div>
     </template>
     <script setup lang="js">
     import { ref } from 'vue';
@@ -336,24 +341,28 @@
     const purchases = ref('');
     const shipping = ref('');
     const stores = ref('');
+    const isLoading = ref(true);
+    const message = ref('Collecting user information...')
     
     async function getUserData () {
       try {
-        const response = await fetch(`https://localhost:7026/api/User/GetById`, {
+        const response = await fetch(`https://localhost:7249/api/UserAccount/Get/`+ sessionStorage.getItem('334_group_user_userId'), {
           credentials: 'include'
         });
         const data = await response.json();
+        isLoading.value = false;
         return data;
       } catch (error) {
-        console.error('Error in getUserData:', error);
-        throw error;
+        console.error('Error in getUserData:', error)
       }
     }
     
     async function setUserData () {
       const userData = {
+        Id: sessionStorage.getItem('334_group_user_userId'),
         givenName: firstName.value,
         surname: surname.value,
+        displayName: firstName.value + " " + surname.value,
         email: email.value,
         street: streetAddress.value,
         city: city.value,
@@ -366,8 +375,8 @@
       }
     
       try {
-        const response = await fetch(`https://localhost:7026/api/User/UpdateContactInfo`, {
-          method: 'PATCH',
+        const response = await fetch(`https://localhost:7249/api/UserAccount/Update/`+ sessionStorage.getItem('334_group_user_userId'), {
+          method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
           },

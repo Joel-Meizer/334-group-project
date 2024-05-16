@@ -1,12 +1,4 @@
 <template>
-    <!--
-      This example requires updating your template:
-  
-      ```
-      <html class="h-full bg-white">
-      <body class="h-full">
-      ```
-    -->
     <div>
       <TransitionRoot as="template" :show="sidebarOpen">
         <Dialog as="div" class="relative z-50 lg:hidden" @close="sidebarOpen = false">
@@ -111,9 +103,8 @@
               <Menu as="div" class="relative">
                 <MenuButton class="-m-1.5 flex items-center p-1.5">
                   <span class="sr-only">Open user menu</span>
-                  <img class="h-8 w-8 rounded-full bg-gray-50" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
                   <span class="hidden lg:flex lg:items-center">
-                    <span class="ml-4 text-sm font-semibold leading-6 text-gray-900" aria-hidden="true">Tom Cook</span>
+                    <span class="ml-4 text-sm font-semibold leading-6 text-gray-900" aria-hidden="true">{{ displayName }}</span>
                     <ChevronDownIcon class="ml-2 h-5 w-5 text-gray-400" aria-hidden="true" />
                   </span>
                 </MenuButton>
@@ -149,7 +140,7 @@
     MenuItem,
     MenuItems,
     TransitionChild,
-    TransitionRoot,
+    TransitionRoot
   } from '@headlessui/vue'
   import {
     Bars3Icon,
@@ -160,14 +151,16 @@
     DocumentDuplicateIcon,
     FolderIcon,
     HomeIcon,
-    UsersIcon,
     XMarkIcon,
     MagnifyingGlassIcon,
     BellAlertIcon,
-    ArrowTrendingUpIcon
+    ArrowTrendingUpIcon,
+    UsersIcon
   } from '@heroicons/vue/24/outline'
 
 const currentPath = ref('');
+
+const displayName = ref('');
 
 // Method to check if the path is active
 const isActive = (path) => currentPath.value === path;
@@ -178,6 +171,9 @@ const router = useRouter();
 // Update currentPath on component mount
 onMounted(() => {
   currentPath.value = router.currentRoute.value.path;
+  if (typeof sessionStorage !== 'undefined') {
+      displayName.value = sessionStorage.getItem('334_group_user_displayName');
+  }
 });
 
 // Update currentPath when the route changes
@@ -193,8 +189,7 @@ watch(router.currentRoute, () => {
     { name: 'Food Searcher', href: '/food-searcher', icon: MagnifyingGlassIcon, pathName: '/food-searcher' },
     { name: 'Suggested meal plans', href: '/meal-plan', icon: ArrowTrendingUpIcon, pathName: '/meal-plan' },
     { name: 'Order History', href: '/order-history', icon: CalendarIcon, pathName: '/order-history' },
-    { name: 'Alerts', href: '/alerts', icon: BellAlertIcon, pathName: '/alerts' },
-    { name: 'Admin', href: '/admin', icon: ChartPieIcon, pathName: '/admin' },
+    { name: 'Alerts', href: '/alerts', icon: BellAlertIcon, pathName: '/alerts' }
   ]
   const teams = [
     { id: 1, name: 'Heroicons', href: '#', initial: 'H', current: false },
@@ -207,4 +202,5 @@ watch(router.currentRoute, () => {
   ]
   
   const sidebarOpen = ref(false)
+
   </script>

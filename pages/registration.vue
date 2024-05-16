@@ -1,5 +1,7 @@
 <template>
     <topnav />
-    <padding-item />
-    <footer-file />
+    <div class="pl-72">
+        <padding-item />
+        <footer-file />
+    </div>
 </template>

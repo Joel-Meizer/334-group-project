@@ -2,9 +2,6 @@
     <div v-if=sessionAuthed>
         <register-login />
     </div>
-    <div v-if=!sessionAuthed>
-        <topnav />
-    </div>
 </template>
 
 <script>
@@ -15,8 +12,6 @@ export default {
         sessionAuthed() {
             return Cookies.get('Atlas.Affinity.Authed') == null;
         }
-    },
-    method: {
     }
 }
 

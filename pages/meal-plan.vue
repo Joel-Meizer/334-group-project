@@ -1,17 +1,19 @@
 <template>
     <topnav />
-    <header-text headerText="Suggested Meal Plans" subHeaderText="Discover a collection of carefully curated meal plan suggestions."/>
-    <div class="mx-auto max-w-7xl sm:px-2 lg:px-8 pt-8">
-        <meal-plans headerMessage="Meal Plan 1" :meals="mealPlans" />
+    <div class="pl-72">
+        <header-text headerText="Suggested Meal Plans" subHeaderText="Discover a collection of carefully curated meal plan suggestions."/>
+        <div class="mx-auto max-w-7xl sm:px-2 lg:px-8 pt-8">
+            <meal-plans headerMessage="Meal Plan 1" :meals="mealPlans" />
+        </div>
+        <div class="mx-auto max-w-7xl sm:px-2 lg:px-8 pt-8">
+            <meal-plans headerMessage="Meal Plan 2" :meals="mealPlans" />
+        </div>
+        <div class="mx-auto max-w-7xl sm:px-2 lg:px-8 pt-8">
+            <meal-plans headerMessage="Meal Plan 3" :meals="mealPlans" />
+        </div>
+        <padding-item />
+        <footer-file />
     </div>
-    <div class="mx-auto max-w-7xl sm:px-2 lg:px-8 pt-8">
-        <meal-plans headerMessage="Meal Plan 2" :meals="mealPlans" />
-    </div>
-    <div class="mx-auto max-w-7xl sm:px-2 lg:px-8 pt-8">
-        <meal-plans headerMessage="Meal Plan 3" :meals="mealPlans" />
-    </div>
-    <padding-item />
-    <footer-file />
 </template>
 
 <script setup>
