@@ -4,9 +4,9 @@
             <h1 class="text-base font-semibold leading-6 text-gray-900">{{headerMessage}}</h1>
         </div>
         <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <li v-for="meal in props.meals" class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow">
+        <li v-for="meal in meals.meals" class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow">
             <div class="flex w-full items-center justify-between space-x-6 p-2">
-            <img class="h-40 w-50 flex-shrink-0 bg-gray-300 ml-auto mr-auto" :src="meal.imageUrl" alt="" />
+                <img class=" w-50 flex-shrink-0 bg-gray-300 ml-auto mr-auto" :src="meal.imageUrl" alt="" />
             </div>
             <div>
             <div class="-mt-px flex divide-x divide-gray-200">
@@ -26,7 +26,7 @@
 import { defineProps } from 'vue'
   const props = defineProps({
     headerMessage: String,
-    meals: Array
+    meals: Object
   });
 </script>
 

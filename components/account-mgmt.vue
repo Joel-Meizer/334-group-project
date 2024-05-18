@@ -1,5 +1,5 @@
 <template>
-    <div v-if="isLoading">
+    <div v-if="isLoading" class="pl-72">
         <loading-indicator :Message="message" />
     </div>
     <div v-else>
@@ -383,8 +383,8 @@
           body: JSON.stringify(userData),
         });
     
-        const data = await response.json();
-        return data;
+        await response;
+        window.location.reload();
       } catch (error) {
         console.error('Error in setUserData:', error);
         throw error;

@@ -2,7 +2,7 @@
   
   <div class="mx-auto max-w-7xl sm:px-2 lg:px-8 mt-8">
     <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      <li v-for="store in stores" :key="store.url" class="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow">
+      <li v-for="store in stores" :key="store.url" class="hoverStyling col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow">
         <div class="flex flex-1 flex-col p-8">
           <h3 class="mt-6 text-sm font-medium text-gray-900">{{ store.name }}</h3>
           <dl class="mt-1 flex flex-grow flex-col justify-between">
@@ -32,3 +32,15 @@
       stores: Array
   });
   </script>
+
+<style>
+.hoverStyling {
+        border-radius: 5px; 
+        box-shadow: 5px 4px 8px gray;
+        transition: all ease-in-out 0.3s;
+    }
+
+    .hoverStyling:hover {
+        box-shadow: 6px 7px 15px gray;
+    }
+</style>

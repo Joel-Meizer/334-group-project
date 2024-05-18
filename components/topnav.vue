@@ -78,7 +78,7 @@
         </div>
       </div>
   
-      <div class="lg:pl-72">
+      <div class="lg:pl-72 sticky-container">
         <div class="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
           <button type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden" @click="sidebarOpen = true">
             <span class="sr-only">Open sidebar</span>
@@ -182,6 +182,7 @@ watch(router.currentRoute, () => {
 });
 
   import { ChevronDownIcon } from '@heroicons/vue/20/solid'
+  import { ShoppingBagIcon } from '@heroicons/vue/24/outline'
   
   const navigation = [
     { name: 'Home Page', href: '/home-page', icon: HomeIcon, pathName: '/home-page' },
@@ -189,6 +190,7 @@ watch(router.currentRoute, () => {
     { name: 'Food Searcher', href: '/food-searcher', icon: MagnifyingGlassIcon, pathName: '/food-searcher' },
     { name: 'Suggested meal plans', href: '/meal-plan', icon: ArrowTrendingUpIcon, pathName: '/meal-plan' },
     { name: 'Order History', href: '/order-history', icon: CalendarIcon, pathName: '/order-history' },
+    { name: 'Shopping List', href: '/shopping-lists', icon: ShoppingBagIcon, pathName: '/shopping-lists' },
     { name: 'Alerts', href: '/alerts', icon: BellAlertIcon, pathName: '/alerts' }
   ]
   const teams = [
@@ -204,3 +206,18 @@ watch(router.currentRoute, () => {
   const sidebarOpen = ref(false)
 
   </script>
+
+<style>
+
+.sticky-container {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    z-index: 6;
+    max-width: 100vw;
+    background-color: white;
+  }
+
+</style>

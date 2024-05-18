@@ -71,6 +71,8 @@ async function login() {
     sessionStorage.setItem("334_group_user_userId", result.data.value.user.id);
     window.location.href = "/home-page"
     isLoading.value = false
+  } else {
+    isLoading.value = false
   }
 
 };
