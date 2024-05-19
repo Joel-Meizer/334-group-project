@@ -4,6 +4,9 @@
         <div v-if="isLoading">
             <loading-indicator :Message=message />
         </div>
+        <div v-else-if="accessLevel == 1 || accessLevel == 2">
+            <not-found />
+        </div>
         <div v-else>
             <order-history :orders=orders />
             <padding-item />
@@ -14,11 +17,12 @@
 
 <script setup>
 
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 
 const orders = ref([])
 const isLoading = ref(true);
 const message = ref("Collecting your order history...")
+const accessLevel = computed(() => sessionStorage.getItem("334_group_user_userType"))
 
 async function GetOrders() {
     try {

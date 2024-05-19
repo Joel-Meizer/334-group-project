@@ -66,7 +66,13 @@
               <li>
                 <ul role="list" class="-mx-2 space-y-1">
                   <li v-for="item in navigation" :key="item.name">
-                    <a :href="item.href" :class="[isActive(item.pathName) ? 'bg-gray-800 text-white' : 'text-gray-400 hover:text-white hover:bg-gray-800', 'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold']">
+                    <a v-if="item.name == 'Order History' && accessLevel == 0 || accessLevel == 3" :href="item.href" :class="[isActive(item.pathName) ? 'bg-gray-800 text-white' : 'text-gray-400 hover:text-white hover:bg-gray-800', 'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold']">
+                      <component :is="item.icon" class="h-6 w-6 shrink-0" aria-hidden="true" />
+                      {{ item.name }} 
+                    </a>
+                    <a v-else-if="item.name == 'Order History' && accessLevel == 1 || accessLevel == 2">
+                    </a>
+                    <a v-else :href="item.href" :class="[isActive(item.pathName) ? 'bg-gray-800 text-white' : 'text-gray-400 hover:text-white hover:bg-gray-800', 'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold']">
                       <component :is="item.icon" class="h-6 w-6 shrink-0" aria-hidden="true" />
                       {{ item.name }} 
                     </a>
@@ -130,7 +136,7 @@
   </template>
   
   <script setup>
-  import { ref, onMounted } from 'vue'
+  import { ref, onMounted, computed } from 'vue'
   import { useRouter } from 'vue-router';
   import {
     Dialog,
@@ -155,6 +161,7 @@
     MagnifyingGlassIcon,
     BellAlertIcon,
     ArrowTrendingUpIcon,
+    ShoppingCartIcon,
     UsersIcon
   } from '@heroicons/vue/24/outline'
 
@@ -162,6 +169,7 @@ const currentPath = ref('');
 
 const displayName = ref('');
 
+const accessLevel = computed(() => sessionStorage.getItem("334_group_user_userType"))
 // Method to check if the path is active
 const isActive = (path) => currentPath.value === path;
 
@@ -189,6 +197,7 @@ watch(router.currentRoute, () => {
     { name: 'Trusted Grocers', href: '/trusted-grocers', icon: UsersIcon, pathName: '/trusted-grocers' },
     { name: 'Food Searcher', href: '/food-searcher', icon: MagnifyingGlassIcon, pathName: '/food-searcher' },
     { name: 'Suggested meal plans', href: '/meal-plan', icon: ArrowTrendingUpIcon, pathName: '/meal-plan' },
+    { name: 'Items & Meals', href: '/items-and-meals', icon: ShoppingCartIcon, pathName: '/items-and-meals' },
     { name: 'Order History', href: '/order-history', icon: CalendarIcon, pathName: '/order-history' },
     { name: 'Shopping List', href: '/shopping-lists', icon: ShoppingBagIcon, pathName: '/shopping-lists' },
     { name: 'Alerts', href: '/alerts', icon: BellAlertIcon, pathName: '/alerts' }

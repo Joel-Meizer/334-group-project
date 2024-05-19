@@ -25,7 +25,7 @@
                     <input
                         v-model="firstName"
                         type="text"
-                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-deep-purple-accent-400 sm:text-sm sm:leading-6"
+                        class="flex-grow text-black w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-blue-500 focus:outline-none focus:shadow-outline"
                         id="firstName"
                         name="firstName"
                         required
@@ -36,7 +36,7 @@
                     <input
                         v-model="lastName"
                         type="text"
-                        class="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-blue-500 focus:outline-none focus:shadow-outline"
+                        class="flex-grow text-black w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-blue-500 focus:outline-none focus:shadow-outline"
                         id="lastName"
                         name="lastName"
                         required
@@ -47,7 +47,7 @@
                     <input
                         v-model="email"
                         type="text"
-                        class="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-blue-500 focus:outline-none focus:shadow-outline"
+                        class="flex-grow text-black w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-blue-500 focus:outline-none focus:shadow-outline"
                         id="email"
                         name="email"
                         required
@@ -58,15 +58,24 @@
                     <input
                         v-model="password"
                         type="password"
-                        class="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-blue-500 focus:outline-none focus:shadow-outline"
+                        class="flex-grow text-black w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-blue-500 focus:outline-none focus:shadow-outline"
                         id="password"
                         name="password"
                         required
                     />
                     </div>
+                    <div class="mt-2">
+                        <label for="accountType" class="inline-block mb-1 font-medium text-gray-500">Account Type</label>
+                        <select v-model="accountType" required id="accountType" name="accountType" autocomplete="accountType" class="flex-grow text-black w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm focus:border-blue-500 focus:outline-none focus:shadow-outline">
+                            <option>Administrator</option>
+                            <option>Child User</option>
+                            <option>Adolescent User</option>
+                            <option>Adult User</option>
+                        </select>
+                    </div>
                     <div class="mt-4 mb-2 sm:mb-4">
                     <input
-                        @click.prevent="registerUser"
+                        @click.prevent="registerUser()"
                         type="submit"
                         class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-blue-500 hover:bg-blue-700 focus:shadow-outline focus:outline-none"
                     >
@@ -94,10 +103,31 @@ const firstName = ref('')
 const lastName = ref('')
 const password = ref('')
 const email = ref('')
+const accountType = ref('')
 const openProductCreation = ref('false')
 
 const productForm = computed(() => openProductCreation.value === 'false')
-const registerUser = async () => {
+async function registerUser() {
+let type = 0
+
+    switch(accountType.value) {
+        case "Administrator": {
+            type = 0;
+            break;
+        }
+        case "Child User": {
+            type = 1
+            break;
+        }
+        case "Adolescent User": {
+            type = 2;
+            break;
+        }
+        case "Adult User": {
+            type = 3;
+            break;
+        }
+    }
 
 const userData = {
     id: "",
@@ -107,6 +137,7 @@ const userData = {
     Email: email.value,
     Password: password.value,
     emailConfirmed: false,
+    type: type,
     phoneNumber: "",
     street: "",
     city: "",

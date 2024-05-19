@@ -60,8 +60,8 @@
                         <p class="text-sm font-semibold leading-6 text-gray-900">{{ item.id }}</p>
                     </div>
                 </div>
-                <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-                    <button type="submit" @click.prevent="deleteItem(individualMealPlans, item.id)" class="rounded-md bg-red-400 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Remove Item</button>
+                <div v-if="accessLevel == 0 || accessLevel == 3" class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+                    <button type="submit" @click.prevent="deleteItem(shoppingListId, 'individualProducts', item.id)" class="rounded-md bg-red-400 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Remove Item</button>
                 </div>
             </li>
             <li class="flex justify-between gap-x-6 bg-gray-900" style="height: 30px; line-height: 30px;">
@@ -97,8 +97,8 @@
                         <p class="text-sm font-semibold leading-6 text-gray-900">{{ item.id }}</p>
                     </div>
                 </div>
-                <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-                    <button type="submit" @click.prevent="deleteItem(individualMealPlans, item.id)" class="rounded-md bg-red-400 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Remove Item</button>
+                <div v-if="accessLevel == 0 || accessLevel == 3" class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+                    <button type="submit" @click.prevent="deleteItem(shoppingListId, 'individualMeals', item.id)" class="rounded-md bg-red-400 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Remove Item</button>
                 </div>
             </li>
             <li class="flex justify-between gap-x-6 bg-gray-900" style="height: 30px; line-height: 30px;">
@@ -134,8 +134,8 @@
                         <p class="text-sm font-semibold leading-6 text-gray-900">{{ item.id }}</p>
                     </div>
                 </div>
-                <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-                    <button type="submit" @click.prevent="deleteItem(individualMealPlans, item.id)" class="rounded-md bg-red-400 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Remove Item</button>
+                <div v-if="accessLevel == 0 || accessLevel == 3" class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+                    <button type="submit" @click.prevent="deleteItem(shoppingListId, 'individualMealPlans', item.id)" class="rounded-md bg-red-400 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Remove Item</button>
                 </div>
             </li>
             <li class="flex justify-between gap-x-6 py-5 bg-gray-900">
@@ -158,13 +158,14 @@
   </template>
   
   <script setup>
-  import {ref,onMounted} from 'vue'
+  import {ref,onMounted,computed} from 'vue'
   const shoppingListItems = ref([])
   const shoppingListId = ref("")
   const totalAmount = ref(0)
   const isLoading = ref(true)
   const message = ref("Generating shopping list...")
-  
+  const accessLevel = computed(() => sessionStorage.getItem("334_group_user_userType"))
+
   async function getShoppingList(shoppingListId) {
     const response = await fetch("https://localhost:7249/api/ShoppingList/Get/" + shoppingListId)
     shoppingListItems.value = await response.json();
@@ -206,9 +207,20 @@ function calculateCost() {
   isLoading.value = false
 }
 
-  async function deleteItem(location, itemId) {
+async function deleteItem(listId, listName, itemId) {
+    const url = `https://localhost:7249/api/ShoppingList/DeleteItemFromList/${listId}?listName=${listName}&itemId=${itemId}`;
+    const response = await fetch(url, {
+        method: 'DELETE'
+    });
 
-  }
+    if (response.ok) {
+        console.log('Item deleted successfully');
+        message.value = "Successfully deleted item, reloading shopping list..."
+        window.location.reload()
+    } else {
+        console.error('Failed to delete item', response.status);
+    }
+}
 
   onMounted(getShoppingListId)
   </script>
