@@ -141,8 +141,7 @@
             <li class="flex justify-between gap-x-6 py-5 bg-gray-900">
                 <div class="flex min-w-0 gap-x-4">
                     <p class="h-12 w-12 flex-none rounded-full "></p>
-                    <div class="min-w-0 flex-auto mr-10" style="min-width: 120px; max-width: 120px">
-                    </div>
+                    <button type="submit" style="min-width: 120px" @click.prevent="createOrder()" class="rounded-md bg-blue-400 mr-10 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Submit Order</button>
                     <div class="min-w-0 flex-auto mr-10" style="min-width: 120px; max-width: 120px">
                         <p class="text-sm font-semibold leading-6 text-gray-400">Total Amount: </p>
                         <p class="text-sm font-semibold leading-6 text-gray-400">${{ totalAmount }}</p>
@@ -178,7 +177,7 @@
     const userObj = await response.json();
     shoppingListId.value = userObj.relatedShoppingListId
     if(userObj.relatedShoppingListId != null) {
-        shoppingListItems.value = await getShoppingList(userObj.relatedShoppingListId)
+        await getShoppingList(userObj.relatedShoppingListId)
     }
   }
 
@@ -203,7 +202,7 @@ function calculateCost() {
     })
   }
 
-  totalAmount.value = total
+  totalAmount.value = total.toFixed(2)
   isLoading.value = false
 }
 
@@ -220,6 +219,35 @@ async function deleteItem(listId, listName, itemId) {
     } else {
         console.error('Failed to delete item', response.status);
     }
+}
+
+async function createOrder() {
+    const body = {
+        id: "",
+        TotalPrice: totalAmount.value,
+        OrderName: shoppingListItems.value.displayName,
+        OrderDate: new Date(),
+        IsDelivered: false,
+        Status: "Pending confirmation",
+        deliveryAddress: "example address",
+        ShoppingList: shoppingListItems.value
+    }
+
+    const url = `https://localhost:7249/api/Order/Post`;
+    const response = await fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(body),
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    });
+
+    const data = await response.json()
+    const userId = sessionStorage.getItem("334_group_user_userId")
+    const url2 = 'https://localhost:7249/api/UserAccount/UpdateOrderIDs/' + userId + "?orderId=" + data.id;
+    await fetch(url2, {
+        method: 'PUT'
+    });
 }
 
   onMounted(getShoppingListId)

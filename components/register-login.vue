@@ -54,6 +54,12 @@ const message = ref('Verifying your login credentials...')
 const isLoading = ref(false);
 
 async function login() {
+  sessionStorage.setItem("334_group_user_displayName", "");
+  sessionStorage.setItem("334_group_user_userId", "");
+  sessionStorage.setItem("334_group_user_userType", 3);
+  sessionStorage.setItem("334_group_user_shoppingListId", "");
+
+
   isLoading.value = true
   const url = `https://localhost:7249/api/UserAccount/Validate`
   const response = await useFetch(url, {

@@ -47,7 +47,7 @@ const alerts = ref([])
 
 async function getUserAlerts() {
     try {
-        const response = await fetch('https://localhost:7249/api/UserAccount/Get/6645e7b34a5f82fec3f4b448')
+        const response = await fetch('https://localhost:7249/api/UserAccount/Get/' + sessionStorage.getItem('334_group_user_userId'))
         const data = await response.json();
         alerts.value = data.alerts
         isLoading.value = false;  

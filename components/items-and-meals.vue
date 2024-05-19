@@ -89,7 +89,6 @@
 
         if (response.ok) {
             console.log('Item added successfully');
-            window.location.reload();
         } else {
             console.error('Failed to add item', response.status);
         }
