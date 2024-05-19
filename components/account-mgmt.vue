@@ -325,6 +325,53 @@
         </form>
       </div>
     </form>
+
+    <header-text headerText="Family Profile Creator" subHeaderText="Create new profiles for family members."/>
+    <form style="padding: 50px; background-color: white; border-radius: 10px; box-shadow: 1px 5px 8px grey; margin-left: 350px; margin-right: 50px;">
+      <div class="space-y-12">
+        <div class="border-b border-gray-900/10 pb-12">
+          <h2 class="text-4xl font-semibold leading-7 text-gray-900">Account Management</h2><br>
+          <p class="mt-1 text-sm leading-6 text-gray-600">This information will be used for your user account / profile.</p>
+    
+          <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+            <div class="sm:col-span-4">
+              <label for="userId" class="block text-sm font-medium leading-6 text-gray-900">User ID</label>
+              <div class="mt-2">
+                <input v-model="userId" style="padding-left: 10px" disabled type="text" name="userId" id="userId" autocomplete="userId" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-deep-purple-accent-400 sm:text-sm sm:leading-6" />
+              </div>
+            </div>
+    
+            <div class="sm:col-span-3">
+              <label for="firstName" class="block text-sm font-medium leading-6 text-gray-900">First name</label>
+              <div class="mt-2">
+                <input v-model="firstName" style="padding-left: 10px" type="text" name="firstName" id="firstName" autocomplete="firstName" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-deep-purple-accent-400 sm:text-sm sm:leading-6" />
+              </div>
+            </div>
+    
+            <div class="sm:col-span-3">
+              <label for="surname" class="block text-sm font-medium leading-6 text-gray-900">Last name</label>
+              <div class="mt-2">
+                <input v-model="surname" style="padding-left: 10px" type="text" name="surname" id="surname" autocomplete="surname" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-deep-purple-accent-400 sm:text-sm sm:leading-6" />
+              </div>
+            </div>
+    
+            <div class="sm:col-span-6">
+              <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
+              <div class="mt-2">
+                <input v-model="email" style="padding-left: 10px" id="email" name="email" type="email" autocomplete="email" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-deep-purple-accent-400 sm:text-sm sm:leading-6" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+
+
+
+
+
+
   </div>
     </template>
     <script setup lang="js">

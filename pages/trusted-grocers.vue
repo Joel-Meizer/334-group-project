@@ -32,5 +32,5 @@ async function GetStores() {
     }
 }
 
-onMounted(GetStores)
+onMounted(GetStores);
 </script>

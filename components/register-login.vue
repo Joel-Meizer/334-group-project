@@ -56,6 +56,8 @@ const isLoading = ref(false);
 async function login() {
   sessionStorage.setItem("334_group_user_displayName", "");
   sessionStorage.setItem("334_group_user_userId", "");
+  sessionStorage.setItem("334_group_user_userType", 0);
+  sessionStorage.setItem("334_group_user_shoppingListId", "");
 
 
   isLoading.value = true
@@ -73,6 +75,8 @@ async function login() {
     message.value = "Success!"
     sessionStorage.setItem("334_group_user_displayName", result.data.value.user.displayName);
     sessionStorage.setItem("334_group_user_userId", result.data.value.user.id);
+    sessionStorage.setItem("334_group_user_userType", result.data.value.user.type);
+    sessionStorage.setItem("334_group_user_shoppingListId", result.data.value.user.relatedShoppingListId);
     window.location.href = "/home-page"
     isLoading.value = false
   } else {
