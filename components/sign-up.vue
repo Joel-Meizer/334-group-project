@@ -25,11 +25,7 @@
                     <input
                         v-model="firstName"
                         type="text"
-<<<<<<< HEAD
-                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-deep-purple-accent-400 sm:text-sm sm:leading-6"
-=======
                         class="flex-grow text-black w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-blue-500 focus:outline-none focus:shadow-outline"
->>>>>>> 5bb76556b89e89e99e3ee8f762382cd6d0e07439
                         id="firstName"
                         name="firstName"
                         required
@@ -40,11 +36,7 @@
                     <input
                         v-model="lastName"
                         type="text"
-<<<<<<< HEAD
-                        class="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-blue-500 focus:outline-none focus:shadow-outline"
-=======
                         class="flex-grow text-black w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-blue-500 focus:outline-none focus:shadow-outline"
->>>>>>> 5bb76556b89e89e99e3ee8f762382cd6d0e07439
                         id="lastName"
                         name="lastName"
                         required
@@ -55,11 +47,7 @@
                     <input
                         v-model="email"
                         type="text"
-<<<<<<< HEAD
-                        class="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-blue-500 focus:outline-none focus:shadow-outline"
-=======
                         class="flex-grow text-black w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-blue-500 focus:outline-none focus:shadow-outline"
->>>>>>> 5bb76556b89e89e99e3ee8f762382cd6d0e07439
                         id="email"
                         name="email"
                         required
@@ -70,21 +58,12 @@
                     <input
                         v-model="password"
                         type="password"
-<<<<<<< HEAD
-                        class="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-blue-500 focus:outline-none focus:shadow-outline"
-=======
                         class="flex-grow text-black w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-blue-500 focus:outline-none focus:shadow-outline"
->>>>>>> 5bb76556b89e89e99e3ee8f762382cd6d0e07439
                         id="password"
                         name="password"
                         required
                     />
                     </div>
-<<<<<<< HEAD
-                    <div class="mt-4 mb-2 sm:mb-4">
-                    <input
-                        @click.prevent="registerUser"
-=======
                     <div class="mt-2">
                         <label for="accountType" class="inline-block mb-1 font-medium text-gray-500">Account Type</label>
                         <select v-model="accountType" required id="accountType" name="accountType" autocomplete="accountType" class="flex-grow text-black w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm focus:border-blue-500 focus:outline-none focus:shadow-outline">
@@ -97,7 +76,6 @@
                     <div class="mt-4 mb-2 sm:mb-4">
                     <input
                         @click.prevent="registerUser()"
->>>>>>> 5bb76556b89e89e99e3ee8f762382cd6d0e07439
                         type="submit"
                         class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-blue-500 hover:bg-blue-700 focus:shadow-outline focus:outline-none"
                     >
