@@ -141,7 +141,7 @@
             <li class="flex justify-between gap-x-6 py-5 bg-gray-900">
                 <div class="flex min-w-0 gap-x-4">
                     <p class="h-12 w-12 flex-none rounded-full "></p>
-                    <button type="submit" style="min-width: 120px" @click.prevent="createOrder()" class="rounded-md bg-blue-400 mr-10 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Submit Order</button>
+                    <button v-if="accessLevel == 0 || accessLevel == 3" type="submit" style="min-width: 120px" @click.prevent="createOrder()" class="rounded-md bg-blue-400 mr-10 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Submit Order</button>
                     <div class="min-w-0 flex-auto mr-10" style="min-width: 120px; max-width: 120px">
                         <p class="text-sm font-semibold leading-6 text-gray-400">Total Amount: </p>
                         <p class="text-sm font-semibold leading-6 text-gray-400">${{ totalAmount }}</p>
